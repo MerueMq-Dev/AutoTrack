@@ -1,0 +1,42 @@
+﻿@using AutoTrack.Domain
+@{
+    ViewData["Title"] = "AutoTrack";
+}
+<h1>@ViewData["Title"]</h1>
+
+@inject AutoTrackDbContext context
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">VIN</th>
+        <th scope="col">Year Of Manufacture</th>
+        <th scope="col">Price</th>
+        <th scope="col">Condition</th>
+        <th scope="col">Mileage</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (context.Vehicles != null && context.Vehicles.Any())
+    {
+        @foreach (var vehicle in context.Vehicles)
+            {
+            <tr>
+                <td>@vehicle.Id</td>
+                <td>@vehicle.VIN</td>
+                <td>@vehicle.YearOfManufacture</td>
+                <td>@vehicle.Price</td>
+                <td>@vehicle.TechnicalCondition</td>
+                <td>@vehicle.Mileage</td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="4">No vehicles available.</td>
+        </tr>
+    }
+    </tbody>
+</table>
