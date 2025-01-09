@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Code\\C#\\AutoTrack\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F3FBAED6-7D54-486E-B844-8318D3A35E3A}|AutoTrack.Domain\\AutoTrack.Domain.csproj|c:\\code\\c#\\autotrack\\autotrack.domain\\migrations\\20250108120403_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3FBAED6-7D54-486E-B844-8318D3A35E3A}|AutoTrack.Domain\\AutoTrack.Domain.csproj|solutionrelative:autotrack.domain\\migrations\\20250108120403_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F3FBAED6-7D54-486E-B844-8318D3A35E3A}|AutoTrack.Domain\\AutoTrack.Domain.csproj|c:\\code\\c#\\autotrack\\autotrack.domain\\entities\\vehicleentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3FBAED6-7D54-486E-B844-8318D3A35E3A}|AutoTrack.Domain\\AutoTrack.Domain.csproj|solutionrelative:autotrack.domain\\entities\\vehicleentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Code\\C#\\AutoTrack\\AutoTrack.Domain\\Migrations\\20250108120403_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:AutoTrack.Domain\\Migrations\\20250108120403_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F3FBAED6-7D54-486E-B844-8318D3A35E3A}|AutoTrack.Domain\\AutoTrack.Domain.csproj|c:\\code\\c#\\autotrack\\autotrack.domain\\autotrackdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,19 +27,30 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "20250108120403_init.cs",
-              "DocumentMoniker": "C:\\Code\\C#\\AutoTrack\\AutoTrack.Domain\\Migrations\\20250108120403_init.cs",
-              "RelativeDocumentMoniker": "AutoTrack.Domain\\Migrations\\20250108120403_init.cs",
-              "ToolTip": "C:\\Code\\C#\\AutoTrack\\AutoTrack.Domain\\Migrations\\20250108120403_init.cs",
-              "RelativeToolTip": "AutoTrack.Domain\\Migrations\\20250108120403_init.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "VehicleEntity.cs",
+              "DocumentMoniker": "C:\\Code\\C#\\AutoTrack\\AutoTrack.Domain\\Entities\\VehicleEntity.cs",
+              "RelativeDocumentMoniker": "AutoTrack.Domain\\Entities\\VehicleEntity.cs",
+              "ToolTip": "C:\\Code\\C#\\AutoTrack\\AutoTrack.Domain\\Entities\\VehicleEntity.cs*",
+              "RelativeToolTip": "AutoTrack.Domain\\Entities\\VehicleEntity.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-08T12:04:04.237Z",
+              "WhenOpened": "2025-01-09T09:56:53.789Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "20250108120403_init.cs",
+              "DocumentMoniker": "C:\\Code\\C#\\AutoTrack\\AutoTrack.Domain\\Migrations\\20250108120403_init.cs",
+              "RelativeDocumentMoniker": "AutoTrack.Domain\\Migrations\\20250108120403_init.cs",
+              "ToolTip": "C:\\Code\\C#\\AutoTrack\\AutoTrack.Domain\\Migrations\\20250108120403_init.cs",
+              "RelativeToolTip": "AutoTrack.Domain\\Migrations\\20250108120403_init.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-08T12:04:04.237Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "AutoTrackDbContext.cs",
               "DocumentMoniker": "C:\\Code\\C#\\AutoTrack\\AutoTrack.Domain\\AutoTrackDbContext.cs",
               "RelativeDocumentMoniker": "AutoTrack.Domain\\AutoTrackDbContext.cs",
@@ -43,8 +58,7 @@
               "RelativeToolTip": "AutoTrack.Domain\\AutoTrackDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-08T11:23:29.798Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-08T11:23:29.798Z"
             }
           ]
         }

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace AutoTrack.Domain.Entities;
 
 public class VehicleEntity : BaseEntity
@@ -9,4 +11,9 @@ public class VehicleEntity : BaseEntity
     public string VIN { get; set; } // Уникальный идентификатор (номер VIN)
     public bool WasInAccident { get; set; } // Участвовала в аварии
     public string TechnicalCondition { get; set; } // Оценка технического состояния автомобиля (например, "отличное", "хорошее", "требует ремонта")   
+    
+    public long CarModelId { get; set; }
+    
+    [ForeignKey("CarModelId")] 
+    public CarModelEntity CarModel { get; set; }
 }

@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AutoTrack.Domain.Migrations
 {
     [DbContext(typeof(AutoTrackDbContext))]
-    [Migration("20250108120403_init")]
+    [Migration("20250109095759_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -24,6 +24,42 @@ namespace AutoTrack.Domain.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("AutoTrack.Domain.Entities.CarModelEntity", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("CarType")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("DriveType")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("EngineType")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("FuelType")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ModelName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("SeatingCapacity")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CarModels");
+                });
+
             modelBuilder.Entity("AutoTrack.Domain.Entities.VehicleEntity", b =>
                 {
                     b.Property<long>("Id")
@@ -31,6 +67,9 @@ namespace AutoTrack.Domain.Migrations
                         .HasColumnType("bigint");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("CarModelId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Color")
                         .IsRequired()
@@ -58,7 +97,25 @@ namespace AutoTrack.Domain.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CarModelId");
+
                     b.ToTable("Vehicles");
+                });
+
+            modelBuilder.Entity("AutoTrack.Domain.Entities.VehicleEntity", b =>
+                {
+                    b.HasOne("AutoTrack.Domain.Entities.CarModelEntity", "CarModel")
+                        .WithMany("Vehicles")
+                        .HasForeignKey("CarModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CarModel");
+                });
+
+            modelBuilder.Entity("AutoTrack.Domain.Entities.CarModelEntity", b =>
+                {
+                    b.Navigation("Vehicles");
                 });
 #pragma warning restore 612, 618
         }

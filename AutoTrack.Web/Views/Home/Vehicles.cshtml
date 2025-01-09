@@ -1,6 +1,7 @@
 ﻿@using AutoTrack.Domain
+@using Microsoft.EntityFrameworkCore
 @{
-    ViewData["Title"] = "AutoTrack";
+    ViewData["Title"] = "Vehicles";
 }
 <h1>@ViewData["Title"]</h1>
 
@@ -10,25 +11,31 @@
     <thead>
     <tr>
         <th scope="col">Id</th>
+        <th scope="col">Model</th>
         <th scope="col">VIN</th>
         <th scope="col">Year Of Manufacture</th>
         <th scope="col">Price</th>
         <th scope="col">Condition</th>
         <th scope="col">Mileage</th>
+        <th scope="col">Color</th>
     </tr>
     </thead>
     <tbody>
     @if (context.Vehicles != null && context.Vehicles.Any())
     {
-        @foreach (var vehicle in context.Vehicles)
-            {
+        @foreach (var vehicle in context.Vehicles
+                      .OrderBy(x => x.Id)
+                      .Include(vehicleEntity => vehicleEntity.CarModel))
+        {
             <tr>
                 <td>@vehicle.Id</td>
+                <td>@vehicle.CarModel.ModelName</td>
                 <td>@vehicle.VIN</td>
                 <td>@vehicle.YearOfManufacture</td>
                 <td>@vehicle.Price</td>
                 <td>@vehicle.TechnicalCondition</td>
-                <td>@vehicle.Mileage</td>
+                <td>@vehicle.Mileage km</td>
+                <td>@vehicle.Color</td>
             </tr>
         }
     }
