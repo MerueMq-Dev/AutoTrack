@@ -4,6 +4,10 @@ namespace AutoTrack.Domain.Entities;
 
 public class BaseEntity
 {
-    [Key]
+    [Key] 
     public long Id { get; set; }
+
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    
+    public DateTime? DeletedAt { get; set; }
 }

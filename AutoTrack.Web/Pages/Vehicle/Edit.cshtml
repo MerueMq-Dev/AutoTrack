@@ -1,0 +1,65 @@
+@page "{id?}"
+@model AutoTrack.Web.Pages.Vehicle.Edit
+
+@{
+}
+@if(Model.CurrentVehicle == null){
+<div class="d-flex justify-content-center">
+    <h1> The vehicle with this ID does not exist.</h1>
+</div>
+}
+
+@if(Model.CurrentVehicle != null){
+<div>
+    <h1> Vehicle Edit </h1>
+</div>
+<form method="post" class="d-flex flex-column gap-4" asp-antiforgery="true">
+    <div class="d-flex flex-wrap gap-3">
+        <input hidden type="text" asp-for="CurrentVehicle.Id" class="form-control"/>
+        <div class="d-flex flex-column w-25 justify-content-between">
+            <label asp-for="CurrentVehicle.CarModelId">Car Model</label>
+            <select required class="form-select" asp-for="CurrentVehicle.CarModelId" asp-items="Model.CarModels">
+            </select>
+        </div>
+        <div class="d-flex flex-column w-25">
+            <label asp-for="CurrentVehicle.Color" class="form-label">Color</label>
+            <input required type="text" asp-for="CurrentVehicle.Color" class="form-control"/>
+        </div>
+
+        <div class="d-flex flex-column w-25">
+            <label asp-for="CurrentVehicle.VIN" class="form-label">VIN</label>
+            <input required type="text" asp-for="CurrentVehicle.VIN" class="form-control"/>
+        </div>
+
+        <div class="d-flex flex-column w-25">
+            <label asp-for="CurrentVehicle.Mileage" class="form-label">Mileage</label>
+            <input required type="number" asp-for="CurrentVehicle.Mileage" class="form-control"/>
+        </div>
+
+        <div class="d-flex flex-column w-25">
+            <label asp-for="CurrentVehicle.Price" class="form-label">Price</label>
+            <input required type="number" asp-for="CurrentVehicle.Price" class="form-control"/>
+        </div>
+
+        <div class="d-flex flex-column w-25">
+            <label asp-for="CurrentVehicle.TechnicalCondition" class="form-label">Technical Condition</label>
+            <input required type="text" asp-for="CurrentVehicle.TechnicalCondition" class="form-control"/>
+        </div>
+
+        <div class="d-flex flex-column w-25">
+            <label asp-for="CurrentVehicle.YearOfManufacture" class="form-label">Year Of Manufacture</label>
+            <input required type="number" asp-for="CurrentVehicle.YearOfManufacture" class="form-control"/>
+        </div>
+
+        <div class="d-flex flex-column align-content-start w-25">
+            <label asp-for="CurrentVehicle.WasInAccident" class="form-label">Was In Accident</label>
+            <input type="checkbox" asp-for="CurrentVehicle.WasInAccident"/>
+        </div>
+    </div>
+    
+    <div class="d-flex gap-1">
+        <button type="submit" asp-page-handler="edit" class="btn btn-success">Save</button>
+        <a type="submit" href="/Vehicles" class="btn btn-primary">Cancel</a>
+    </div>
+</form>
+}

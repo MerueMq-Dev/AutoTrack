@@ -1,0 +1,57 @@
+@page "{id?}"
+@model AutoTrack.Web.Pages.CarModel.Edit
+
+@{
+}
+
+@if (Model.CurrentCarModel == null)
+{
+    <div class="d-flex justify-content-center">
+        <h1> The car model with this ID does not exist.</h1>
+    </div>
+}
+
+@if (Model.CurrentCarModel != null)
+{
+    <div>
+        <h1> Car Model Edit </h1>
+    </div>
+    <form method="post" class="d-flex flex-column gap-4" asp-antiforgery="true">
+        <div class="d-flex flex-wrap gap-3">
+            <input hidden type="text" asp-for="CurrentCarModel.Id" class="form-control"/>
+            <div class="d-flex flex-column w-25">
+                <label for="ModelName" class="form-label">Model Name</label>
+                <input type="text" id="ModelName" asp-for="CurrentCarModel.ModelName" class="form-control"/>
+            </div>
+
+            <div class="d-flex flex-column w-25">
+                <label class="form-label">Car Type</label>
+                <input asp-for="CurrentCarModel.CarType" class="form-control"/>
+            </div>
+
+            <div class="d-flex flex-column w-25">
+                <label asp-for="CurrentCarModel.EngineType" class="form-label">Engine Type</label>
+                <input type="text" asp-for="CurrentCarModel.EngineType" class="form-control"/>
+            </div>
+
+            <div class="d-flex flex-column w-25">
+                <label asp-for="CurrentCarModel.FuelType" class="form-label">Fuel Type</label>
+                <input asp-for="CurrentCarModel.FuelType" class="form-control"/>
+            </div>
+
+            <div class="d-flex flex-column w-25">
+                <label asp-for="CurrentCarModel.DriveType" class="form-label">Drive Type</label>
+                <input type="text" asp-for="CurrentCarModel.DriveType" class="form-control"/>
+            </div>
+
+            <div class="d-flex flex-column w-25">
+                <label asp-for="CurrentCarModel.SeatingCapacity" class="form-label">Seating Capacity</label>
+                <input type="number" asp-for="CurrentCarModel.SeatingCapacity" class="form-control"/>
+            </div>
+        </div>
+        <div class="d-flex gap-1">
+            <button type="submit" asp-page-handler="edit" class="btn btn-success">Save</button>
+            <a type="submit" href="/CarModels" class="btn btn-primary">Cancel</a>
+        </div>
+    </form>
+}

@@ -9,11 +9,8 @@ public class AutoTrackDbContext : DbContext
     public AutoTrackDbContext(DbContextOptions<AutoTrackDbContext> options):base(options)
     {
     }
-    
-    public AutoTrackDbContext()
-    {
-        
-    }
+
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
     }

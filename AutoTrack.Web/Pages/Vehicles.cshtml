@@ -1,0 +1,95 @@
+@page
+@model AutoTrack.Web.Pages.Vehicles
+@{
+    ViewData["Title"] = "Vehicles";
+}
+<h1>@ViewData["Title"]</h1>
+
+<form method="post" class="d-flex flex-wrap gap-3" asp-antiforgery="true">
+    <div class="d-flex flex-column w-25 justify-content-between">
+        <label asp-for="NewVehicle.CarModelId">Car Model</label>
+        <select required class="form-select" asp-for="NewVehicle.CarModelId" asp-items="Model.CarModels">
+            <option selected="selected" disabled="disabled">Choose model</option>
+        </select>
+    </div>
+    <div class="d-flex flex-column w-25">
+        <label asp-for="NewVehicle.VIN" class="form-label">VIN</label>
+        <input required type="text" asp-for="NewVehicle.VIN" class="form-control"/>
+    </div>
+    <div class="d-flex flex-column w-25">
+        <label asp-for="NewVehicle.YearOfManufacture" class="form-label">Year Of Manufacture</label>
+        <input required type="number" asp-for="NewVehicle.YearOfManufacture" class="form-control"/>
+    </div>
+    <div class="d-flex flex-column w-25">
+        <label asp-for="NewVehicle.Price" class="form-label">Price</label>
+        <input required type="number" asp-for="NewVehicle.Price" class="form-control"/>
+    </div>
+    <div class="d-flex flex-column w-25">
+        <label asp-for="NewVehicle.TechnicalCondition" class="form-label">Condition</label>
+        <input required type="text" asp-for="NewVehicle.TechnicalCondition" class="form-control"/>
+    </div>
+    <div class="d-flex flex-column w-25">
+        <label asp-for="NewVehicle.Mileage" class="form-label">Mileage</label>
+        <input required type="number" asp-for="NewVehicle.Mileage" class="form-control"/>
+    </div>
+    <div class="d-flex flex-column w-25">
+        <label asp-for="NewVehicle.Color" class="form-label">Color</label>
+        <input required type="text" asp-for="NewVehicle.Color" class="form-control"/>
+    </div>
+    <div class="d-flex flex-column align-content-start w-25">
+        <label asp-for="NewVehicle.WasInAccident" class="form-label">Was In Accident</label>
+        <input type="checkbox" asp-for="NewVehicle.WasInAccident"/>
+    </div>
+
+    <button type="submit" asp-page-handler="create" class="btn btn-primary">Add</button>
+</form>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Model</th>
+        <th scope="col">VIN</th>
+        <th scope="col">Year Of Manufacture</th>
+        <th scope="col">Price</th>
+        <th scope="col">Condition</th>
+        <th scope="col">Mileage</th>
+        <th scope="col">Color</th>
+        <th scope="col">Was In Accident</th>
+        <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model.CurrentVehicles.Any())
+    {
+        @foreach (var vehicle in Model.CurrentVehicles
+                      .OrderBy(x => x.Id))
+        {
+            <tr>
+                <td>@vehicle.Id</td>
+                <td>@vehicle.CarModel.ModelName</td>
+                <td>@vehicle.VIN</td>
+                <td>@vehicle.YearOfManufacture</td>
+                <td>@vehicle.Price</td>
+                <td>@vehicle.TechnicalCondition</td>
+                <td>@vehicle.Mileage km</td>
+                <td>@vehicle.Color</td>
+                <td>@( vehicle.WasInAccident ? "Yes" : "No" )</td>
+                <td>
+                    <form method="post">
+                        <input hidden type="number" asp-for="Id" value="@vehicle.Id"/>
+                        <button type="submit" asp-page-handler="edit" class="btn btn-primary">Edit</button>
+                        <button type="submit" asp-page-handler="delete" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="4">No vehicles available.</td>
+        </tr>
+    }
+    </tbody>
+</table>

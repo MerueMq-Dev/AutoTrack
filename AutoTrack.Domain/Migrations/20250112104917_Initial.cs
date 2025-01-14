@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -6,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AutoTrack.Domain.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,7 +23,9 @@ namespace AutoTrack.Domain.Migrations
                     EngineType = table.Column<string>(type: "text", nullable: false),
                     FuelType = table.Column<string>(type: "text", nullable: false),
                     DriveType = table.Column<string>(type: "text", nullable: false),
-                    SeatingCapacity = table.Column<int>(type: "integer", nullable: false)
+                    SeatingCapacity = table.Column<int>(type: "integer", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -42,7 +45,9 @@ namespace AutoTrack.Domain.Migrations
                     VIN = table.Column<string>(type: "text", nullable: false),
                     WasInAccident = table.Column<bool>(type: "boolean", nullable: false),
                     TechnicalCondition = table.Column<string>(type: "text", nullable: false),
-                    CarModelId = table.Column<long>(type: "bigint", nullable: false)
+                    CarModelId = table.Column<long>(type: "bigint", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
