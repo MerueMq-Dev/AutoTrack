@@ -41,4 +41,10 @@ public class Vehicles(IVehicleService vehicleService, ICarModelService carModelS
         models = carModelService.GetAll().Result;
         CurrentVehicles = await vehicleService.GetAll();
     }
+
+    public async Task<string> GetCarModelNameById(long id)
+    {
+         var carModel = await carModelService.GetById(id);
+         return carModel.ModelName;
+    }
 }

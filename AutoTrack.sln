@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoTrack.Application", "Au
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoTrack.Web", "AutoTrack.Web\AutoTrack.Web.csproj", "{8081491F-9112-46CA-A0C3-438F7708C731}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoTrack.Web.Api", "AutoTrack.Web.Api\AutoTrack.Web.Api.csproj", "{8DC871B2-E523-4D6D-8504-95F256EE6BA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{8081491F-9112-46CA-A0C3-438F7708C731}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8081491F-9112-46CA-A0C3-438F7708C731}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8081491F-9112-46CA-A0C3-438F7708C731}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DC871B2-E523-4D6D-8504-95F256EE6BA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DC871B2-E523-4D6D-8504-95F256EE6BA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DC871B2-E523-4D6D-8504-95F256EE6BA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DC871B2-E523-4D6D-8504-95F256EE6BA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -67,7 +67,7 @@
         {
             <tr>
                 <td>@vehicle.Id</td>
-                <td>@vehicle.CarModel.ModelName</td>
+                <td>@await Model.GetCarModelNameById(vehicle.CarModelId)</td>
                 <td>@vehicle.VIN</td>
                 <td>@vehicle.YearOfManufacture</td>
                 <td>@vehicle.Price</td>

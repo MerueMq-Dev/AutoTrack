@@ -27,9 +27,7 @@ public class VehicleService(AutoTrackDbContext context, ICarModelService carMode
         EntityEntry<VehicleEntity> entity = context.Vehicles.Add(vehicleEntity);
         VehicleEntity savedEntity = entity.Entity;
         await context.SaveChangesAsync();
-
-        CarModelDto carModel = await carModelService.GetById(savedEntity.CarModelId);
-
+        
         return new VehicleDto()
         {
             Id = savedEntity.Id,
@@ -41,7 +39,6 @@ public class VehicleService(AutoTrackDbContext context, ICarModelService carMode
             WasInAccident = savedEntity.WasInAccident,
             TechnicalCondition = savedEntity.TechnicalCondition,
             CarModelId = savedEntity.CarModelId,
-            CarModel = carModel
         };
     }
 
@@ -70,7 +67,6 @@ public class VehicleService(AutoTrackDbContext context, ICarModelService carMode
     {
         return Task.FromResult(
             context.Vehicles
-                .Include(item => item.CarModel)
                 .Where(item => item.DeletedAt == null)
                 .Select(item => new VehicleDto()
                 {
@@ -83,16 +79,6 @@ public class VehicleService(AutoTrackDbContext context, ICarModelService carMode
                     WasInAccident = item.WasInAccident,
                     TechnicalCondition = item.TechnicalCondition,
                     CarModelId = item.CarModelId,
-                    CarModel = new CarModelDto
-                    {
-                        Id = item.CarModel.Id,
-                        ModelName = item.CarModel.ModelName,
-                        FuelType = item.CarModel.FuelType,
-                        EngineType = item.CarModel.EngineType,
-                        CarType = item.CarModel.CarType,
-                        DriveType = item.CarModel.DriveType,
-                        SeatingCapacity = item.CarModel.SeatingCapacity
-                    }
                 }).ToList()
         );
     }
@@ -100,7 +86,6 @@ public class VehicleService(AutoTrackDbContext context, ICarModelService carMode
     public async Task<VehicleDto> Update(VehicleDto vehicleDto)
     {
         VehicleEntity? vehicleEntity = await context.Vehicles
-            .Include(item => item.CarModel)
             .FirstOrDefaultAsync(item => item.Id == vehicleDto.Id && item.DeletedAt == null);
 
         if (vehicleEntity is null)
@@ -143,17 +128,7 @@ public class VehicleService(AutoTrackDbContext context, ICarModelService carMode
             VIN = vehicleEntity.VIN,
             WasInAccident = vehicleEntity.WasInAccident,
             TechnicalCondition = vehicleEntity.TechnicalCondition,
-            CarModelId = vehicleEntity.CarModelId,
-            CarModel = new CarModelDto
-            {
-                Id = vehicleEntity.CarModel.Id,
-                ModelName = vehicleEntity.CarModel.ModelName,
-                FuelType = vehicleEntity.CarModel.FuelType,
-                EngineType = vehicleEntity.CarModel.EngineType,
-                CarType = vehicleEntity.CarModel.CarType,
-                DriveType = vehicleEntity.CarModel.DriveType,
-                SeatingCapacity = vehicleEntity.CarModel.SeatingCapacity
-            }
+            CarModelId = vehicleEntity.CarModelId
         };
     }
 }
